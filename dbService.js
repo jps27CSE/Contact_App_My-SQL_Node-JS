@@ -40,6 +40,24 @@ class Dbservice {
       console.log(error);
     }
   }
+
+  async insertNewName(name, phone, email, id) {
+    try {
+      const insertId = await new Promise((resolve, reject) => {
+        const query = "INSERT INTO names (name,phone,email) VALUES (?,?,?);";
+
+        connection.query(query, [name, phone, email], (err, result) => {
+          if (err) reject(new Error(err.message));
+          resolve(result.insertId);
+        });
+      });
+
+      console.log(insertId);
+      // return insertData;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 module.exports = Dbservice;

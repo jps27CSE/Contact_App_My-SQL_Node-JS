@@ -11,12 +11,24 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //create
-app.post("/contacts", (req, res) => {
-  let { name, phone, email, id } = req.body;
+app.post("/insert", (req, res) => {
+  let { name, phone, email } = req.body;
+
+  const db = dbService.getDbServiceInstace();
+
+  const results = db.insertNewName(name, phone, email);
+
+  results
+    .then((data) => {
+      res.render("index", { data });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 });
 
 //read
-app.get("/getcontact", (req, res) => {
+app.get("/", (req, res) => {
   const db = dbService.getDbServiceInstace();
   const result = db.getAllData();
   result
