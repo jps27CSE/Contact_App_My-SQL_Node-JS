@@ -66,21 +66,22 @@
             </tr>
           </thead>
           <tbody>
-            <% for(let contact of data) {%>
+            <% data.forEach((datas)=>
+               {%>
             <tr>
-              <td><%= contact.name %></td>
-              <td><%= contact.phone %></td>
-              <td>@<%= contact.email %></td>
+              <td><%= datas.name %></td>
+              <td><%= datas.phone %></td>
+              <td><%= datas.email %></td>
               <td>
                 <button class="btn btn-warning btn-sm">Edit</button>
                 <a
-                  href="/contacts/delete/<%= contact._id %> "
-                  class="btn btn-dark btn-sm"
-                  >Delete</a
+                  // href="/contacts/delete/ "
+                  // class="btn btn-dark btn-sm"
+                  // >Delete</a
                 >
               </td>
             </tr>
-            <% } %>
+            <%  })  %>
           </tbody>
       </div>
     </div>
