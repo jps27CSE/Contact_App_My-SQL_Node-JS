@@ -53,7 +53,12 @@ class Dbservice {
       });
 
       console.log(insertId);
-      // return insertData;
+      return {
+        id: insertId,
+        name: name,
+        phone: phone,
+        email: email,
+      };
     } catch (error) {
       console.log(error);
     }

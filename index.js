@@ -20,7 +20,7 @@ app.post("/insert", (req, res) => {
 
   results
     .then((data) => {
-      res.render("index", { data });
+      res.json({ data: data });
     })
     .catch((err) => {
       console.error(err);
@@ -41,6 +41,9 @@ app.get("/", (req, res) => {
 //update
 
 //delete
+app.get("/contacts/delete/", (req, res) => {
+  let { id } = req.params;
+});
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () =>
